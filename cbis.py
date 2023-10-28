@@ -7,6 +7,7 @@ def cbis(a_list):
             place = binary_loc_finder(a_list, POP + 1, COP - 1, key)
         else:
             place = binary_loc_finder(a_list, 0, POP - 1, key)
+        POP = place
         a_list = place_inserter(a_list, place, COP)
     return a_list
 
