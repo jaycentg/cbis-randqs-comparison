@@ -13,14 +13,11 @@ def cbis(a_list):
 def binary_loc_finder(a_list, start, end, key):
     if start == end:
         if a_list[start] > key:
-            loc = start
-            return loc
+            return start
         else:
-            loc = start + 1
-            return loc
+            return start + 1
     if start > end:
-        loc = start
-        return loc
+        return start
     else:
         mid = (start + end) // 2
         if a_list[mid] < key:
