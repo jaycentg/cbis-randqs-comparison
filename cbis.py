@@ -30,7 +30,7 @@ def binary_loc_finder(a_list, start, end, key):
         
 def place_inserter(a_list, start, end):
     temp = a_list[end]
-    for k in range(end, start - 1, -1):
+    for k in range(end, start, -1):
         a_list[k] = a_list[k - 1]
     a_list[start] = temp
     return a_list
