@@ -2,22 +2,33 @@ import cbis
 import list_generator
 import randomized_quick_sort
 import time
+import tracemalloc
 
 RANDOM_SEED = 12
 
 def do_cbis(arr, arr_type):
+    tracemalloc.start()
     start_time = time.time()
     # tidak disimpan di variabel agar waktu assignment tidak dihitung
     cbis.cbis(arr)
     end_time = time.time()
+    # menggunakan peak memory
+    used = tracemalloc.get_traced_memory()[1]/1024
+    tracemalloc.stop()
+    print(f"Sorting CBIS dengan array {arr_type} berukuran {len(arr)} menghabiskan {used:.10f} KB.")
     delta = (end_time - start_time) * 1000
     print(f"Sorting CBIS dengan array {arr_type} berukuran {len(arr)} menghabiskan {delta:.10f} ms.")
 
 def do_rand_quicksort(arr, arr_type):
+    tracemalloc.start()
     start_time = time.time()
     # tidak disimpan di variabel agar waktu assigmment tidak dihitung
     randomized_quick_sort.quicksort_helper(arr)
     end_time = time.time()
+    # menggunakan peak memory
+    used = tracemalloc.get_traced_memory()[1]/1024
+    tracemalloc.stop()
+    print(f"Sorting Randomized Quicksort dengan array {arr_type} berukuran {len(arr)} menghabiskan {used:.10f} KB.")
     delta = (end_time - start_time) * 1000
     print(f"Sorting Randomized Quicksort dengan array {arr_type} berukuran {len(arr)} menghabiskan {delta:.10f} ms.")
 
